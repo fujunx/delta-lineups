@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-  <rect width="1920" height="1080" fill="#0f1115"/>
-  <rect x="8" y="8" width="1904" height="1064" fill="none" stroke="#2a2f3a" stroke-width="2"/>
-  <text x="60" y="120" fill="#6b7280" font-family="system-ui, sans-serif" font-size="34">DELTA LINEUPS // DEMO PLACEHOLDER</text>
-  <text x="60" y="520" fill="#f5c518" font-family="system-ui, sans-serif" font-size="64" font-weight="700">大坝 · 威龙 · 顶楼燃烧瓶</text>
-  <text x="60" y="600" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="44">04 · 落点</text>
-  <text x="60" y="960" fill="#47505c" font-family="system-ui, sans-serif" font-size="30">04-result.png → 占位图，待替换为真实截图</text>
-</svg>
