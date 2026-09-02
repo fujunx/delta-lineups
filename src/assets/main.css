@@ -417,12 +417,12 @@ button { font-family: inherit; }
   pointer-events: none;
 }
 
-/* ---------------- 全屏查看器 ---------------- */
+/* ---------------- 全屏查看器（浅色系） ---------------- */
 .viewer {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(8, 10, 13, 0.94);
+  background: rgba(245, 246, 248, 0.96);
   display: flex;
   flex-direction: column;
   user-select: none;
@@ -433,7 +433,7 @@ button { font-family: inherit; }
   justify-content: space-between;
   padding: 12px 18px;
 }
-.viewer__name { color: #a7aeb8; }
+.viewer__name { color: var(--muted); }
 .viewer__stage {
   flex: 1;
   display: flex;
@@ -449,8 +449,11 @@ button { font-family: inherit; }
   max-height: 100%;
   object-fit: contain;
   touch-action: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #fff;
 }
-.viewer__error { color: #a7aeb8; text-align: center; }
+.viewer__error { color: var(--muted); text-align: center; }
 
 /* 底部翻页器 */
 .viewer__pager {
@@ -462,16 +465,17 @@ button { font-family: inherit; }
 }
 .viewer__pagerbtn {
   appearance: none;
-  background: #1c2026;
-  color: #e6e9ee;
-  border: 1px solid #343a42;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
   border-radius: 6px;
   width: 48px;
   height: 40px;
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
+  box-shadow: var(--shadow);
   transition: border-color 0.12s, color 0.12s;
 }
 .viewer__pagerbtn:hover { border-color: var(--accent); color: var(--accent); }
-.viewer__counter { color: #e6e9ee; font-variant-numeric: tabular-nums; font-size: 15px; }
+.viewer__counter { color: var(--text); font-variant-numeric: tabular-nums; font-size: 15px; }
