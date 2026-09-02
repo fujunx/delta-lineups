@@ -109,13 +109,6 @@ onBeforeUnmount(() => {
     aria-label="图片预览"
     @click.self="close"
   >
-    <header class="viewer__bar">
-      <span class="viewer__name">{{ current?.name || '' }}</span>
-      <button type="button" class="viewer__close btn" @click="close" aria-label="关闭预览">
-        关闭
-      </button>
-    </header>
-
     <div
       class="viewer__stage"
       @wheel.prevent="onWheel"
