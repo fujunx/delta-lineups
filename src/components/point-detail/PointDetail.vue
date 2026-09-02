@@ -1,11 +1,13 @@
 <script setup>
 /**
- * 点位详情（中间“视频栏”）：点位标题/标签/说明 + 视频。
- * 无点位或异常时显示明确空态。全屏图片查看器与步骤图由工作台统一管理。
+ * 点位详情（右栏“图片”区域）：点位标题/标签/说明 + 视频跳转入口 + 有序步骤图。
+ * 网站内不播放视频，仅提供跳转到 B 站的公链入口。
+ * 无点位或异常时显示明确空态。全屏图片查看器在此统一管理。
  */
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { parseBilibili, buildExternalUrl } from '../../utils/bilibili'
-import MediaVideo from './MediaVideo.vue'
+import StepGallery from './StepGallery.vue'
+import ImageViewer from '../image-viewer/ImageViewer.vue'
 
 const props = defineProps({
   point: { type: Object, default: null },
@@ -13,12 +15,20 @@ const props = defineProps({
   operatorName: { type: String, default: '' },
 })
 
-/** “在 B 站打开”的原始链接（带开始秒数）。无有效 BV 号时为空。 */
-const externalUrl = computed(() => {
-  const url = props.point?.video?.url
-  if (!url) return ''
-  return buildExternalUrl(parseBilibili(url))
-})
+/** 解析当前点位的视频链接（便于跳转到 B 站）。 */
+const videoInfo = computed(() => parseBilibili(props.point?.video?.url || ''))
+const externalUrl = computed(() => buildExternalUrl(videoInfo.value))
+const startSeconds = computed(() => videoInfo.value.start)
+
+/** 当前打开的全屏图片索引，null 表示关闭。 */
+const viewerIndex = ref(null)
+
+function openViewer(i) {
+  viewerIndex.value = i
+}
+function closeViewer() {
+  viewerIndex.value = null
+}
 </script>
 
 <template>
@@ -38,18 +48,28 @@ const externalUrl = computed(() => {
         <a
           v-if="externalUrl"
           :href="externalUrl"
-          class="detail__externallink"
+          class="detail__externallink detail__externallink--primary"
           target="_blank"
           rel="noopener noreferrer"
         >
-          在 B 站打开
+          <span class="detail__play" aria-hidden="true">▶</span>
+          在 B 站打开{{ startSeconds > 0 ? `（${startSeconds}s）` : '' }}
         </a>
+        <span v-else class="detail__unavailable">视频链接无效</span>
       </div>
 
-      <MediaVideo
-        :url="point.video?.url || ''"
-        :local="point.video?.local || ''"
-        :poster="point.video?.poster || point.steps?.[0]?.image || ''"
+      <div class="detail__stepshead">
+        <h3 class="detail__subtitle">步骤图</h3>
+        <span class="detail__count">{{ point.steps?.length || 0 }} 张</span>
+      </div>
+      <StepGallery :steps="point.steps" @open="openViewer" />
+
+      <ImageViewer
+        v-if="viewerIndex !== null"
+        :images="point.steps"
+        :index="viewerIndex"
+        @close="closeViewer"
+        @update:index="(i) => (viewerIndex = i)"
       />
     </template>
 

@@ -1,17 +1,16 @@
 <script setup>
 /**
  * 核心“战术工作台”视图。
- * 布局：顶部筛选栏，下方固定三栏（点位列表 / 视频区域 / 有序步骤图）。
- * 任何分辨率下都保持三栏，宽度不足时压缩中间的视频区域。
+ * 布局：顶部筛选栏，下方固定两栏（点位列表 / 图片）。
+ * 任何分辨率下都保持两栏，宽度不足时压缩右栏图片区域。
+ * 视频不在网站内播放，仅提供跳转到 B 站的入口。
  */
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useLineupQuery } from '../composables/useLineupQuery'
 import { findMap, findOperator } from '../content/catalog'
 import FilterBar from '../components/filters/FilterBar.vue'
 import PointList from '../components/point-list/PointList.vue'
 import PointDetail from '../components/point-detail/PointDetail.vue'
-import StepGallery from '../components/point-detail/StepGallery.vue'
-import ImageViewer from '../components/image-viewer/ImageViewer.vue'
 
 const {
   mapOptions,
@@ -29,17 +28,6 @@ const {
 
 const mapName = computed(() => findMap(appliedMap.value)?.name ?? '')
 const operatorName = computed(() => findOperator(appliedOperator.value)?.name ?? '')
-
-/** 当前打开的全屏图片索引，null 表示关闭。 */
-const viewerIndex = ref(null)
-
-function openViewer(i) {
-  viewerIndex.value = i
-}
-
-function closeViewer() {
-  viewerIndex.value = null
-}
 
 function selectPoint(id) {
   applySelection(id)
@@ -74,18 +62,6 @@ function selectPoint(id) {
           :operator-name="operatorName"
         />
       </section>
-
-      <aside class="workspace__steps panel">
-        <StepGallery :steps="currentPoint?.steps || []" @open="openViewer" />
-      </aside>
     </main>
-
-    <ImageViewer
-      v-if="viewerIndex !== null"
-      :images="currentPoint?.steps || []"
-      :index="viewerIndex"
-      @close="closeViewer"
-      @update:index="(i) => (viewerIndex = i)"
-    />
   </div>
 </template>

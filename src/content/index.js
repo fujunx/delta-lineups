@@ -54,8 +54,6 @@ export function validatePoint(point) {
   const video = point.video
   if (!video) {
     errors.push('缺少视频信息: video')
-  } else if (video.local) {
-    // 未来允许替换为本地 MP4；首期仍以 B 站链接为主。
   } else if (typeof video.url !== 'string' || !video.url.trim()) {
     errors.push('缺少视频地址: video.url')
   } else if (!video.bvid) {
