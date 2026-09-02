@@ -1,9 +1,12 @@
 <script setup>
 /**
  * 有序步骤图（右栏主体）。
- * 通过 ResizeObserver 测量容器可用宽高，动态计算单行高度，
- * 让当前点位的所有步骤图在一屏之内放下。
- * 只渲染图片列表本身，标题/计数由使用方（PointDetail）提供。
+ * 按图片数量动态布局：
+ * - 1 个：单图放大居中。
+ * - 2 个：一行 2 个，放大占满。
+ * - 3~4 个：两行，每行 2 个。
+ * - 大于 4 个：每行 3 个，垂直滚动。
+ * 通过 ResizeObserver 测量容器宽高，使不超过 4 张时一屏放下。
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
@@ -13,7 +16,6 @@ const props = defineProps({
 
 const emit = defineEmits(['open'])
 
-/** 容器测量结果。 */
 const rootRef = ref(null)
 const box = ref({ w: 0, h: 0 })
 let ro = null
@@ -38,23 +40,42 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', update)
 })
 
-const ROW_GAP_RATIO = 0.12
-/** 目标单行高度：同时受可用高度与“按宽度换算的高度”约束，保证一屏放下。 */
-const rowHeight = computed(() => {
+const GAP = 14
+const ASPECT = 16 / 9
+
+/** 根据数量与可用宽高计算网格布局。 */
+const layout = computed(() => {
   const { w, h } = box.value
-  const n = props.steps.length || 1
-  if (!w || !h) return null
-  const byWidth = (w * (1 - ROW_GAP_RATIO)) / n / (16 / 9)
-  return Math.max(96, Math.min(h, byWidth))
+  const n = props.steps.length
+  if (!w || !h || n === 0) return null
+
+  const cols = n === 1 ? 1 : n <= 4 ? 2 : 3
+  const rows = Math.ceil(n / cols)
+  const cellW = (w - GAP * (cols - 1)) / cols
+  const naturalH = cellW / ASPECT
+  const fitsScreen = n <= 4
+  const maximumH = (h - GAP * (rows - 1)) / rows
+  const rowH = fitsScreen ? Math.max(60, Math.min(naturalH, maximumH)) : naturalH
+
+  return { cols, rows, rowH, scroll: n > 4 }
 })
 </script>
 
 <template>
-  <div ref="rootRef" class="stepgallery">
+  <div
+    ref="rootRef"
+    class="stepgallery"
+    :class="{ 'stepgallery--scroll': layout?.scroll }"
+  >
     <ol
       v-if="steps.length"
       class="steps"
-      :style="rowHeight ? { height: rowHeight + 'px' } : null"
+      :style="layout
+        ? {
+            gridTemplateColumns: `repeat(${layout.cols}, minmax(0, 1fr))`,
+            gridTemplateRows: `repeat(${layout.rows}, ${layout.rowH}px)`,
+          }
+        : null"
     >
       <li
         v-for="(step, i) in steps"

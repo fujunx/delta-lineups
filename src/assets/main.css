@@ -337,7 +337,7 @@ button { font-family: inherit; }
 .detail__empty-title { margin: 0 0 6px; font-size: 18px; color: var(--accent-2); }
 .detail__empty-text { margin: 0; }
 
-/* ---------------- 有序步骤图（右栏主体，单行铺满） ---------------- */
+/* ---------------- 有序步骤图（右栏主体，按数量网格布局） ---------------- */
 .stepgallery {
   flex: 1 1 auto;
   min-height: 0;
@@ -346,12 +346,17 @@ button { font-family: inherit; }
   justify-content: center;
   overflow: hidden;
 }
+.stepgallery--scroll {
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
 .steps {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
-  display: flex;
+  display: grid;
   gap: 14px;
 }
 .steps__empty {
@@ -364,9 +369,8 @@ button { font-family: inherit; }
 }
 .steps__item {
   position: relative;
-  flex: 1 1 0;
   min-width: 0;
-  height: 100%;
+  min-height: 0;
 }
 .steps__item.is-broken .steps__thumb { visibility: hidden; }
 .steps__item.is-broken .steps__button::after {
