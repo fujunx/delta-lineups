@@ -7,7 +7,7 @@
  */
 import { computed } from 'vue'
 import { useLineupQuery } from '../composables/useLineupQuery'
-import { findMap, findOperator } from '../content/catalog'
+import { findMap, findOperator, CREATORS } from '../content/catalog'
 import FilterBar from '../components/filters/FilterBar.vue'
 import PointList from '../components/point-list/PointList.vue'
 import PointDetail from '../components/point-detail/PointDetail.vue'
@@ -42,6 +42,7 @@ function selectPoint(id) {
       :map-options="mapOptions"
       :operator-options="operatorOptions"
       :result-count="currentPoints.length"
+      :creators="CREATORS"
       @query="commitQuery"
     />
 

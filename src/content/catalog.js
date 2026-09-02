@@ -26,3 +26,22 @@ export function findMap(id) {
 export function findOperator(id) {
   return OPERATORS.find((o) => o.id === id) ?? null
 }
+
+/**
+ * 创作者（UP 主）B 站空间快捷入口。
+ * 仅作为跳转链接，帮助用户快速进入相应创作者主页查找点位。
+ */
+export const CREATORS = [
+  {
+    id: 'muxia-fps',
+    name: '慕夏FPS-露娜教官',
+    scope: '航天 露娜',
+    url: 'https://space.bilibili.com/3546612506823300',
+  },
+  {
+    id: 'qinlao-xiaomi',
+    name: '勤捞小蜜',
+    scope: '全地图通用',
+    url: 'https://space.bilibili.com/3494372861545409',
+  },
+]

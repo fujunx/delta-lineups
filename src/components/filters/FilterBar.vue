@@ -9,6 +9,7 @@ const props = defineProps({
   map: { type: String, required: true },
   operator: { type: String, required: true },
   resultCount: { type: Number, default: 0 },
+  creators: { type: Array, default: () => [] },
 })
 
 const emit = defineEmits(['update:map', 'update:operator', 'query'])
@@ -64,5 +65,21 @@ function onOperatorChange(e) {
     <div class="filterbar__meta" :class="{ 'filterbar__meta--empty': resultCount === 0 }">
       <span>结果 {{ resultCount }}</span>
     </div>
+
+    <nav v-if="creators.length" class="filterbar__writers" aria-label="创作者快捷入口">
+      <span class="filterbar__writerslabel">快捷入口</span>
+      <a
+        v-for="c in creators"
+        :key="c.id"
+        class="filterbar__writer"
+        :href="c.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        :title="`${c.name}（${c.scope}）`"
+      >
+        <span class="filterbar__writer-name">{{ c.name }}</span>
+        <span class="filterbar__writer-scope">{{ c.scope }}</span>
+      </a>
+    </nav>
   </form>
 </template>
