@@ -262,6 +262,38 @@ button { font-family: inherit; }
   margin: 0;
   padding: 8px;
 }
+.pointlist__empty {
+  margin: 8px;
+  padding: 16px;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.pointlist__group { margin-bottom: 6px; }
+.pointlist__group-title {
+  margin: 0;
+  padding: 6px 12px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.pointlist__group-count {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 8px;
+  background: var(--border-soft);
+  color: var(--text-dim);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.pointlist__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .pointlist__button {
   display: block;
   width: 100%;

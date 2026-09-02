@@ -205,17 +205,18 @@ src/
 ├── content/
 │   ├── catalog.js
 │   └── points/
-│       └── <point-id>/
-│           ├── index.js
-│           ├── 01-position.webp
-│           ├── 02-aim.webp
-│           └── 03-result.webp
+│       └── <category>/
+│           └── <point-id>/
+│               ├── index.js
+│               ├── 01-position.png
+│               ├── 02-aim.png
+│               └── 03-result.png
 ├── router/
 ├── utils/
 └── views/
 ```
 
-`catalog.js` 维护地图和干员选项。每个点位拥有独立目录和内容模块，构建时通过 Vite 自动发现，避免把几十个点位全部堆在一个巨大的数据文件中。
+`catalog.js` 维护地图、干员、点位类别与创作者快捷入口配置。点位按场景类别分组存放，目录第一层为类别（见 `CATEGORIES`），第二层为点位 ID；构建时通过 Vite 自动发现，避免把几十个点位全部堆在一个巨大的数据文件中。类别由目录层级推导，`content/index.js` 会校验该类别是否在目录配置中。
 
 ### 6.2 图片命名
 

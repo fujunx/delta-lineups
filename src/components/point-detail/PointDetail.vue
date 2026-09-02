@@ -6,6 +6,7 @@
  */
 import { computed, ref } from 'vue'
 import { parseBilibili, buildExternalUrl } from '../../utils/bilibili'
+import { findCategory } from '../../content/catalog'
 import StepGallery from './StepGallery.vue'
 import ImageViewer from '../image-viewer/ImageViewer.vue'
 
@@ -19,6 +20,7 @@ const props = defineProps({
 const videoInfo = computed(() => parseBilibili(props.point?.video?.url || ''))
 const externalUrl = computed(() => buildExternalUrl(videoInfo.value))
 const startSeconds = computed(() => videoInfo.value.start)
+const categoryName = computed(() => findCategory(props.point?.category)?.name ?? '')
 
 /** 当前打开的全屏图片索引，null 表示关闭。 */
 const viewerIndex = ref(null)
@@ -36,6 +38,7 @@ function closeViewer() {
     <template v-if="point">
       <header class="detail__head">
         <div class="detail__tags">
+          <span class="tag">{{ categoryName }}</span>
           <span class="tag">{{ mapName }}</span>
           <span class="tag">{{ operatorName }}</span>
         </div>

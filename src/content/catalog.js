@@ -45,3 +45,19 @@ export const CREATORS = [
     url: 'https://space.bilibili.com/3494372861545409',
   },
 ]
+
+/**
+ * 点位类别（场景/阶段分组）配置。
+ * 内容目录按此分组：src/content/points/<category>/
+ * 新增类别只需在此追加一项，并把对应点位移入对应目录。
+ */
+export const CATEGORIES = [
+  { id: 'opening', name: '开局' },
+  { id: 'defend', name: '总裁防守' },
+  { id: 'attack', name: '进攻总裁' },
+]
+
+/** 根据 id 查找点位类别，找不到返回 null。 */
+export function findCategory(id) {
+  return CATEGORIES.find((c) => c.id === id) ?? null
+}

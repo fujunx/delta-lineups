@@ -1,15 +1,29 @@
 /**
  * 点位内容注册与查询。
  *
- * 通过 Vite 自动发现 src/content/points/<point-id>/index.js 下所有内容模块，
- * 避免把几十个点位堆在单个数据文件中。每个点位拥有独立目录和内容配置。
+ * 通过 Vite 自动发现 src/content/points/<category>/<point-id>/index.js 下所有内容模块，
+ * 避免把几十个点位堆在单个数据文件中。每个点位拥有独立目录和内容配置，
+ * 目录层级的第一层为点位类别（见 catalog.js CATEGORIES）。
  */
-import { findMap, findOperator } from './catalog'
+import { findMap, findOperator, findCategory } from './catalog'
 
-const modules = import.meta.glob('./points/*/index.js', { eager: true })
+const modules = import.meta.glob('./points/*/*/index.js', { eager: true })
 
-const points = Object.values(modules)
-  .map((mod) => mod.default)
+/**
+ * 从模块路径解析类别与点位 ID。
+ * 路径形如 ./points/<category>/<point-id>/index.js
+ */
+function parsePointPath(dir) {
+  const parts = dir.split('/')
+  return { category: parts[2], id: parts[3] }
+}
+
+const points = Object.entries(modules)
+  .map(([dir, mod]) => {
+    const point = mod.default
+    const { category } = parsePointPath(dir)
+    return point ? { ...point, category } : null
+  })
   .filter(Boolean)
 
 /* ---------------------------------- 查询 ---------------------------------- */
@@ -50,6 +64,7 @@ export function validatePoint(point) {
 
   if (!findMap(point.map)) errors.push(`未知地图: ${point.map}`)
   if (!findOperator(point.operator)) errors.push(`未知干员: ${point.operator}`)
+  if (!findCategory(point.category)) errors.push(`未知点位类别: ${point.category}`)
 
   const video = point.video
   if (!video) {
