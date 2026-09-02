@@ -1,7 +1,8 @@
 <script setup>
 /**
- * 全屏图片查看器：支持上一张/下一张/关闭、滚轮缩放、拖拽平移。
- * 键盘：Esc 关闭、左右方向键切换。显示“当前 / 总数”，支持失败重载。
+ * 全屏图片查看器。
+ * 底部提供翻页器：上/下箭头 + “当前 / 总数”。翻到末尾继续翻会回到第一页（循环）。
+ * 支持滚轮缩放、拖拽平移；键盘 Esc 关闭、左右方向键上下翻页。
  */
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 
@@ -15,40 +16,32 @@ const emit = defineEmits(['close', 'update:index'])
 const scale = ref(1)
 const tx = ref(0)
 const ty = ref(0)
-/** 当前索引对应的图片是否加载失败。 */
 const failed = ref(false)
 
-const current = computed(() => props.images[props.index] ?? null)
 const total = computed(() => props.images.length)
-const label = computed(() => `第 ${props.index + 1} 张，共 ${total.value} 张`)
+const current = computed(() => props.images[props.index] ?? null)
 
-function resetTransform() {
-  scale.value = 1
-  tx.value = 0
-  ty.value = 0
-  failed.value = false
+/** 循环翻页：越界时回到另一端。 */
+function goPrev() {
+  if (total.value === 0) return
+  emit('update:index', (props.index - 1 + total.value) % total.value)
 }
-
-function prev() {
-  if (props.index > 0) emit('update:index', props.index - 1)
-}
-
-function next() {
-  if (props.index < total.value - 1) emit('update:index', props.index + 1)
+function goNext() {
+  if (total.value === 0) return
+  emit('update:index', (props.index + 1) % total.value)
 }
 
 function close() {
   emit('close')
 }
 
-/* ---------- 键盘 ---------- */
 function onKeydown(e) {
   if (e.key === 'Escape') close()
-  else if (e.key === 'ArrowLeft') prev()
-  else if (e.key === 'ArrowRight') next()
+  else if (e.key === 'ArrowLeft') goPrev()
+  else if (e.key === 'ArrowRight') goNext()
 }
 
-/* ---------- 滚轮缩放（以中心为基准，简化实现） ---------- */
+/* ---------- 滚轮缩放 ---------- */
 function onWheel(e) {
   const delta = e.deltaY > 0 ? -0.1 : 0.1
   const next = Math.min(4, Math.max(1, scale.value + delta))
@@ -68,13 +61,11 @@ function onPointerDown(e) {
   startY = e.clientY - ty.value
   e.currentTarget.setPointerCapture(e.pointerId)
 }
-
 function onPointerMove(e) {
   if (!dragging) return
   tx.value = e.clientX - startX
   ty.value = e.clientY - startY
 }
-
 function onPointerUp(e) {
   dragging = false
   if (e.currentTarget.hasPointerCapture?.(e.pointerId)) {
@@ -82,7 +73,12 @@ function onPointerUp(e) {
   }
 }
 
-watch(() => props.index, resetTransform)
+watch(() => props.index, () => {
+  scale.value = 1
+  tx.value = 0
+  ty.value = 0
+  failed.value = false
+})
 
 onMounted(() => {
   window.addEventListener('keydown', onKeydown)
@@ -103,7 +99,7 @@ onBeforeUnmount(() => {
     @click.self="close"
   >
     <header class="viewer__bar">
-      <span class="viewer__counter" aria-live="polite">{{ index + 1 }} / {{ total }}</span>
+      <span class="viewer__name">{{ current?.name || '' }}</span>
       <button type="button" class="viewer__close btn" @click="close" aria-label="关闭预览">
         关闭
       </button>
@@ -129,27 +125,24 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <button
-      v-if="index > 0"
-      type="button"
-      class="viewer__nav viewer__nav--prev"
-      aria-label="上一张"
-      @click="prev"
-    >
-      ‹
-    </button>
-    <button
-      v-if="index < total - 1"
-      type="button"
-      class="viewer__nav viewer__nav--next"
-      aria-label="下一张"
-      @click="next"
-    >
-      ›
-    </button>
-
-    <footer class="viewer__bar viewer__bar--bottom">
-      <span class="viewer__name">{{ current?.name || '' }}</span>
+    <footer class="viewer__pager">
+      <button
+        type="button"
+        class="viewer__pagerbtn"
+        aria-label="上一张"
+        @click="goPrev"
+      >
+        ‹
+      </button>
+      <span class="viewer__counter" aria-live="polite">{{ index + 1 }} / {{ total }}</span>
+      <button
+        type="button"
+        class="viewer__pagerbtn"
+        aria-label="下一张"
+        @click="goNext"
+      >
+        ›
+      </button>
     </footer>
   </div>
 </template>

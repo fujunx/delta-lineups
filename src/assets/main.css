@@ -101,19 +101,33 @@ button { font-family: inherit; }
    工作台布局（固定两栏）
    ============================================================ */
 .workspace {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .workspace__body {
   flex: 1;
+  min-height: 0;
   display: grid;
   /* 两栏：点位列表 | 图片(弹性，可压缩) */
   grid-template-columns: clamp(220px, 18vw, 340px) minmax(0, 1fr);
   gap: 16px;
   padding: 16px;
-  align-items: start;
+  align-items: stretch;
+}
+
+.workspace__list {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.workspace__detail {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---------------- 筛选栏 ---------------- */
@@ -238,12 +252,16 @@ button { font-family: inherit; }
   margin-top: 2px;
 }
 
-/* ---------------- 视频栏（中间栏） ---------------- */
+/* ---------------- 详情（右栏图片区域） ---------------- */
 .detail {
   padding: 18px 20px 24px;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
-.detail__head { margin-bottom: 16px; }
+.detail__head { margin-bottom: 14px; flex: 0 0 auto; }
 .detail__tags { display: flex; gap: 6px; margin-bottom: 10px; }
 .detail__title { margin: 0; font-size: 22px; font-weight: 700; }
 .detail__summary { margin: 6px 0 0; color: var(--text-dim); }
@@ -253,6 +271,7 @@ button { font-family: inherit; }
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 10px;
+  flex: 0 0 auto;
 }
 .detail__subtitle {
   margin: 0;
@@ -297,8 +316,9 @@ button { font-family: inherit; }
   justify-content: space-between;
   gap: 12px;
   margin: 0 0 10px;
-  padding-top: 18px;
+  padding-top: 14px;
   border-top: 1px solid var(--border-soft);
+  flex: 0 0 auto;
 }
 .detail__count { color: var(--muted); font-size: 13px; }
 
@@ -317,13 +337,21 @@ button { font-family: inherit; }
 .detail__empty-title { margin: 0 0 6px; font-size: 18px; color: var(--accent-2); }
 .detail__empty-text { margin: 0; }
 
-/* ---------------- 有序步骤图（右栏主体） ---------------- */
+/* ---------------- 有序步骤图（右栏主体，单行铺满） ---------------- */
+.stepgallery {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 .steps {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   gap: 14px;
 }
 .steps__empty {
@@ -334,20 +362,31 @@ button { font-family: inherit; }
   border-radius: var(--radius);
   text-align: center;
 }
-.steps__item.is-broken .steps__thumb { display: none; }
+.steps__item {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+}
+.steps__item.is-broken .steps__thumb { visibility: hidden; }
 .steps__item.is-broken .steps__button::after {
   content: '图片缺失';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: var(--danger);
   font-size: 13px;
 }
 .steps__button {
   display: block;
   width: 100%;
-  text-align: left;
+  height: 100%;
+  text-align: center;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 6px;
+  padding: 1px;
   cursor: zoom-in;
   transition: border-color 0.12s, box-shadow 0.12s;
 }
@@ -357,17 +396,25 @@ button { font-family: inherit; }
 }
 .steps__thumb {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
   border-radius: var(--radius);
   background: #fff;
-  border: 1px solid var(--border-soft);
 }
 .steps__label {
-  display: block;
-  margin-top: 6px;
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
   font-size: 12px;
-  color: var(--text-dim);
-  padding: 0 4px 2px;
+  line-height: 1.4;
+  pointer-events: none;
 }
 
 /* ---------------- 全屏查看器 ---------------- */
@@ -386,8 +433,6 @@ button { font-family: inherit; }
   justify-content: space-between;
   padding: 12px 18px;
 }
-.viewer__bar--bottom { justify-content: center; }
-.viewer__counter { color: #e6e9ee; font-variant-numeric: tabular-nums; }
 .viewer__name { color: #a7aeb8; }
 .viewer__stage {
   flex: 1;
@@ -406,21 +451,27 @@ button { font-family: inherit; }
   touch-action: none;
 }
 .viewer__error { color: #a7aeb8; text-align: center; }
-.viewer__nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+
+/* 底部翻页器 */
+.viewer__pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 14px 18px 18px;
+}
+.viewer__pagerbtn {
+  appearance: none;
   background: #1c2026;
   color: #e6e9ee;
   border: 1px solid #343a42;
-  border-radius: 50%;
-  width: 46px;
-  height: 46px;
-  font-size: 26px;
+  border-radius: 6px;
+  width: 48px;
+  height: 40px;
+  font-size: 22px;
   line-height: 1;
   cursor: pointer;
-  z-index: 2;
+  transition: border-color 0.12s, color 0.12s;
 }
-.viewer__nav:hover { border-color: var(--accent); color: var(--accent); }
-.viewer__nav--prev { left: 22px; }
-.viewer__nav--next { right: 22px; }
+.viewer__pagerbtn:hover { border-color: var(--accent); color: var(--accent); }
+.viewer__counter { color: #e6e9ee; font-variant-numeric: tabular-nums; font-size: 15px; }
