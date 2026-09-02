@@ -35,6 +35,12 @@ function close() {
   emit('close')
 }
 
+/** 点击图片区留白：若为拖拽结束则不关，否则关闭。 */
+function onBlankClick() {
+  if (moved) return
+  close()
+}
+
 function onKeydown(e) {
   if (e.key === 'Escape') close()
   else if (e.key === 'ArrowLeft') goPrev()
@@ -54,15 +60,19 @@ function onWheel(e) {
 let dragging = false
 let startX = 0
 let startY = 0
+/** 本次指针交互是否为拖动（用于避免拖拽松手时误触空白关闭）。 */
+let moved = false
 
 function onPointerDown(e) {
   dragging = true
+  moved = false
   startX = e.clientX - tx.value
   startY = e.clientY - ty.value
   e.currentTarget.setPointerCapture(e.pointerId)
 }
 function onPointerMove(e) {
   if (!dragging) return
+  moved = true
   tx.value = e.clientX - startX
   ty.value = e.clientY - startY
 }
@@ -71,6 +81,7 @@ function onPointerUp(e) {
   if (e.currentTarget.hasPointerCapture?.(e.pointerId)) {
     e.currentTarget.releasePointerCapture(e.pointerId)
   }
+  setTimeout(() => { moved = false }, 0)
 }
 
 watch(() => props.index, () => {
@@ -105,7 +116,11 @@ onBeforeUnmount(() => {
       </button>
     </header>
 
-    <div class="viewer__stage" @wheel.prevent="onWheel">
+    <div
+      class="viewer__stage"
+      @wheel.prevent="onWheel"
+      @click.self="onBlankClick"
+    >
       <img
         v-if="current && !failed"
         class="viewer__image"
