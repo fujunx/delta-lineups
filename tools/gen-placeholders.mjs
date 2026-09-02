@@ -43,6 +43,43 @@ const points = [
       { n: '04', name: '落点', f: '04-result.svg' },
     ],
   },
+  // —— 用于演示不同步骤图数量的预设 ——
+  {
+    id: 'space-luna-single',
+    label: '航天 · 露娜 · 单图示例',
+    steps: [{ n: '01', name: '落点', f: '01-result.svg' }],
+  },
+  {
+    id: 'space-luna-pair',
+    label: '航天 · 露娜 · 双图示例',
+    steps: [
+      { n: '01', name: '站位', f: '01-position.svg' },
+      { n: '02', name: '落点', f: '02-result.svg' },
+    ],
+  },
+  {
+    id: 'dam-luna-quintet',
+    label: '大坝 · 露娜 · 五图示例',
+    steps: [
+      { n: '01', name: '站位', f: '01-position.svg' },
+      { n: '02', name: '瞄准点', f: '02-aim.svg' },
+      { n: '03', name: '投掷动作', f: '03-throw.svg' },
+      { n: '04', name: '落点', f: '04-result.svg' },
+      { n: '05', name: '效果确认', f: '05-effect.svg' },
+    ],
+  },
+  {
+    id: 'dam-vlong-hex',
+    label: '大坝 · 威龙 · 六图示例',
+    steps: [
+      { n: '01', name: '站位', f: '01-position.svg' },
+      { n: '02', name: '瞄准点', f: '02-aim.svg' },
+      { n: '03', name: '投掷动作', f: '03-throw.svg' },
+      { n: '04', name: '落点', f: '04-result.svg' },
+      { n: '05', name: '效果确认', f: '05-effect.svg' },
+      { n: '06', name: '后续检查', f: '06-check.svg' },
+    ],
+  },
 ]
 
 for (const pt of points) {
