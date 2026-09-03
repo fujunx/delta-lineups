@@ -4,11 +4,11 @@ export default {
   id: 'space-luna-black-h',
   map: 'space',
   operator: 'luna',
-  name: '黑市射H',
+  name: '总裁外探测箭（射H上）',
   description: '先PEEK一下前点有没有人',
   throwables: ['detect-arrow'],
-  sort: 2,
+  sort: 4,
   steps: [
-    { name: '黑市方向', alt: '瞄准字母H上面一点点', image: step1 },
+    { name: '黑室方向', alt: '瞄准字母H上面一点点', image: step1 },
   ],
 }

@@ -57,8 +57,7 @@ export const CATEGORIES = [
   { id: 'control-tower-defend', name: '中控楼防守' },
   { id: 'defend', name: '总裁防守' },
   { id: 'attack', name: '进攻总裁' },
-  { id: 'president-outer-detect', name: '总裁外全探测' },
-  { id: 'black-market-attack', name: '黑市进攻总裁' },
+  { id: 'black-market-attack', name: '黑室进攻总裁' },
   { id: 'float-attack', name: '浮力进攻总裁' },
 ]
 
