@@ -12,12 +12,6 @@ export default {
   sort: 3,
   steps: [
     {
-      name: '电箭',
-      alt: '站在缺口前，跳跃点射一根电箭',
-      image: step1,
-      video: { url: 'https://www.bilibili.com/video/BV1WW6eBKEuz?t=71', bvid: 'BV1WW6eBKEuz', start: 71 },
-    },
-    {
       name: '手雷 · 站位',
       alt: '玻璃拐角（手雷）的站位',
       image: step2,
@@ -28,6 +22,12 @@ export default {
       alt: '玻璃拐角（手雷）的瞄准位置',
       image: step3,
       video: { url: 'https://www.bilibili.com/video/BV14KcxzMEYi?t=48', bvid: 'BV14KcxzMEYi', start: 48 },
+    },
+    {
+      name: '电箭',
+      alt: '站在缺口前，跳跃点射一根电箭',
+      image: step1,
+      video: { url: 'https://www.bilibili.com/video/BV1WW6eBKEuz?t=71', bvid: 'BV1WW6eBKEuz', start: 71 },
     },
   ],
 }
