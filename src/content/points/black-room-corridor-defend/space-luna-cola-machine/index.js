@@ -4,7 +4,7 @@ export default {
   id: 'space-luna-cola-machine',
   map: 'space',
   operator: 'luna',
-  name: '可乐机',
+  name: '破洞（可乐机）',
   description: '蓄力不反弹',
   throwables: ['electric-arrow'],
   sort: 3,

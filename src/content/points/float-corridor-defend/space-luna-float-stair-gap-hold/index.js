@@ -5,7 +5,7 @@ export default {
   id: 'space-luna-float-stair-gap-hold',
   map: 'space',
   operator: 'luna',
-  name: '破楼梯口直架',
+  name: '楼梯口',
   description: '蓄力反弹',
   throwables: ['electric-arrow'],
   sort: 6,

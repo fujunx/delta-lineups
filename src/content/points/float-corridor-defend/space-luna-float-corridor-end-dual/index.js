@@ -5,7 +5,7 @@ export default {
   id: 'space-luna-float-corridor-end-dual',
   map: 'space',
   operator: 'luna',
-  name: '走廊尽头直架',
+  name: '走廊尽头',
   description: '电箭蓄力不反弹；手雷2秒丢',
   throwables: ['electric-arrow', 'grenade'],
   sort: 1,

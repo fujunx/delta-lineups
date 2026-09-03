@@ -5,7 +5,7 @@ export default {
   id: 'space-luna-hole-break',
   map: 'space',
   operator: 'luna',
-  name: '破洞直架',
+  name: '破洞（箱子上）',
   description: '反弹、点射',
   throwables: ['electric-arrow'],
   sort: 2,
