@@ -339,13 +339,16 @@ button { font-family: inherit; }
   padding: 0 0 0 12px;
 }
 .pointlist__button {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 54px;
   width: 100%;
   text-align: left;
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius);
-  padding: 9px 12px;
+  padding: 7px 12px;
   color: var(--text);
   cursor: pointer;
   transition: background 0.12s, border-color 0.12s;
@@ -372,8 +375,6 @@ button { font-family: inherit; }
 }
 .pointlist__summary {
   display: block;
-  /* 预留一行固定高度：有无一句话，列表项高度保持一致 */
-  min-height: 18px;
   line-height: 1.4;
   color: var(--text-dim);
   font-size: 13px;
