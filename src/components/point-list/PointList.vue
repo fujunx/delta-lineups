@@ -1,9 +1,9 @@
 <script setup>
 /**
  * 紧凑点位列表。每项只展示名称与一句话用途，突出扫描效率。
- * 按点位类别分组显示，组顺序遵循 CATEGORIES 配置。
+ * 按点位类别分组显示，组顺序遵循 CATEGORIES 配置；点击类别标题可折叠/展开该组。
  */
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { CATEGORIES, findCategory } from '../../content/catalog'
 
 const props = defineProps({
@@ -12,6 +12,13 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['select'])
+
+/** 记录各类别是否折叠（默认展开）。 */
+const collapsed = reactive({})
+
+function toggle(category) {
+  collapsed[category] = !collapsed[category]
+}
 
 /** 按类别分组，组顺序按 CATEGORIES 定义，未知类别排最后。 */
 const groups = computed(() => {
@@ -27,13 +34,11 @@ const groups = computed(() => {
     const ib = order.get(b[0]) ?? Number.MAX_SAFE_INTEGER
     return ia - ib
   })
-  const labelled = entries.map(([id, items]) => ({
+  return entries.map(([id, items]) => ({
     category: id,
     name: findCategory(id)?.name ?? id,
     items,
   }))
-  // 仅在有类别时保留空首组？此处保持所有组。
-  return labelled
 })
 
 function select(id) {
@@ -50,8 +55,18 @@ function select(id) {
       :key="g.category"
       class="pointlist__group"
     >
-      <h3 class="pointlist__group-title">{{ g.name }} <span class="pointlist__group-count">{{ g.items.length }}</span></h3>
-      <ul class="pointlist__list">
+      <button
+        type="button"
+        class="pointlist__group-button"
+        :aria-expanded="!collapsed[g.category]"
+        @click="toggle(g.category)"
+      >
+        <span class="pointlist__chevron" :class="{ 'is-open': !collapsed[g.category] }" aria-hidden="true">▸</span>
+        <span class="pointlist__group-name">{{ g.name }}</span>
+        <span class="pointlist__group-count">{{ g.items.length }}</span>
+      </button>
+
+      <ul v-show="!collapsed[g.category]" class="pointlist__list">
         <li v-for="p in g.items" :key="p.id" class="pointlist__item">
           <button
             type="button"

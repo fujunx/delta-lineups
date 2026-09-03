@@ -270,18 +270,39 @@ button { font-family: inherit; }
   border-radius: var(--radius);
   text-align: center;
 }
-.pointlist__group { margin-bottom: 6px; }
-.pointlist__group-title {
+.pointlist__group { margin-bottom: 4px; }
+.pointlist__group-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
   margin: 0;
-  padding: 6px 12px 4px;
+  padding: 7px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--muted);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
 }
+.pointlist__group-button:hover {
+  background: var(--panel-2);
+  color: var(--text);
+}
+.pointlist__chevron {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+.pointlist__chevron.is-open { transform: rotate(90deg); }
+.pointlist__group-name { flex: 1; }
 .pointlist__group-count {
   display: inline-block;
-  margin-left: 6px;
   padding: 0 6px;
   border-radius: 8px;
   background: var(--border-soft);
