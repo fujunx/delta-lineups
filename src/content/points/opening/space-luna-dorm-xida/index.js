@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '宿舍电西大',
-  summary: '看西大是否开卡',
+  summary: '40秒射出',
   video: {
     url: 'https://www.bilibili.com/video/BV11jTWz5EQk?t=6',
     bvid: 'BV11jTWz5EQk',
