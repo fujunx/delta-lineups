@@ -359,63 +359,29 @@ button { font-family: inherit; }
 .detail__head { margin-bottom: 14px; flex: 0 0 auto; }
 .detail__tags { display: flex; gap: 6px; margin-bottom: 10px; }
 .detail__title { margin: 0; font-size: 22px; font-weight: 700; }
-.detail__summary { margin: 6px 0 0; color: var(--text-dim); }
-.detail__videohead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-  flex: 0 0 auto;
-}
-.detail__subtitle {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.detail__externallink {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1;
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: border-color 0.12s, background 0.12s, box-shadow 0.12s;
-}
-.detail__externallink:hover {
-  border-color: var(--accent);
-  background: var(--panel-2);
-}
-.detail__externallink--primary {
+.detail__video-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border-color: var(--accent-strong);
-  background: var(--accent-strong);
-  color: #1f1a04;
-  font-weight: 700;
+  margin-top: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 10px;
+  line-height: 1.2;
+  transition: border-color 0.12s, background 0.12s, box-shadow 0.12s;
 }
-.detail__externallink--primary:hover {
-  filter: brightness(1.05);
-  background: var(--accent-strong);
-  border-color: var(--accent-strong);
+.detail__video-link:hover {
+  border-color: var(--accent);
+  background: var(--panel-2);
+  box-shadow: 0 0 0 2px rgba(223, 160, 0, 0.14);
 }
-.detail__play { font-size: 12px; line-height: 1; }
-.detail__unavailable { font-size: 13px; color: var(--muted); }
-.detail__stepshead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0 0 10px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-soft);
-  flex: 0 0 auto;
-}
-.detail__count { color: var(--muted); font-size: 13px; }
+.detail__play { font-size: 11px; line-height: 1; }
+.detail__unavailable { font-size: 13px; color: var(--muted); margin-top: 6px; display: inline-block; }
+.detail__summary { margin: 8px 0 0; color: var(--text-dim); }
 
 /* 空状态 */
 .detail__empty {

@@ -43,28 +43,22 @@ function closeViewer() {
           <span class="tag">{{ operatorName }}</span>
         </div>
         <h2 class="detail__title">{{ point.name }}</h2>
-        <p class="detail__summary">{{ point.summary }}</p>
-      </header>
 
-      <div class="detail__videohead">
-        <h3 class="detail__subtitle">视频</h3>
         <a
           v-if="externalUrl"
           :href="externalUrl"
-          class="detail__externallink detail__externallink--primary"
+          class="detail__video-link"
           target="_blank"
           rel="noopener noreferrer"
         >
           <span class="detail__play" aria-hidden="true">▶</span>
-          在 B 站打开{{ startSeconds > 0 ? `（${startSeconds}s）` : '' }}
+          <span>在 B 站打开{{ startSeconds > 0 ? `（${startSeconds}s）` : '' }}</span>
         </a>
         <span v-else class="detail__unavailable">视频链接无效</span>
-      </div>
 
-      <div class="detail__stepshead">
-        <h3 class="detail__subtitle">步骤图</h3>
-        <span class="detail__count">{{ point.steps?.length || 0 }} 张</span>
-      </div>
+        <p class="detail__summary">{{ point.summary }}</p>
+      </header>
+
       <StepGallery :steps="point.steps" @open="openViewer" />
 
       <ImageViewer
