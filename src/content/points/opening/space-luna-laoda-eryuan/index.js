@@ -7,6 +7,7 @@ export default {
   operator: 'luna',
   name: '牢大电二员',
   summary: '',
+  sort: 3,
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=75',
     bvid: 'BV1ywRNBZEUH',

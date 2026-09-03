@@ -25,6 +25,13 @@ const points = Object.entries(modules)
     return point ? { ...point, category } : null
   })
   .filter(Boolean)
+  // 按排序权重升序；无 sort 的排最后，再用 id 兜底保证稳定。
+  .sort((a, b) => {
+    const sa = typeof a.sort === 'number' ? a.sort : Number.MAX_SAFE_INTEGER
+    const sb = typeof b.sort === 'number' ? b.sort : Number.MAX_SAFE_INTEGER
+    if (sa !== sb) return sa - sb
+    return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
+  })
 
 /* ---------------------------------- 查询 ---------------------------------- */
 
