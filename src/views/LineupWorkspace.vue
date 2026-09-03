@@ -9,6 +9,7 @@ import { computed } from 'vue'
 import { useLineupQuery } from '../composables/useLineupQuery'
 import { findMap, findOperator, CREATORS } from '../content/catalog'
 import FilterBar from '../components/filters/FilterBar.vue'
+import CategoryMenu from '../components/filters/CategoryMenu.vue'
 import PointList from '../components/point-list/PointList.vue'
 import PointDetail from '../components/point-detail/PointDetail.vue'
 
@@ -21,9 +22,11 @@ const {
   currentPoint,
   appliedMap,
   appliedOperator,
+  selectedCategory,
   selectedPointId,
   commitQuery,
   applySelection,
+  selectCategory,
 } = useLineupQuery()
 
 const mapName = computed(() => findMap(appliedMap.value)?.name ?? '')
@@ -45,6 +48,8 @@ function selectPoint(id) {
       :creators="CREATORS"
       @query="commitQuery"
     />
+
+    <CategoryMenu v-model="selectedCategory" />
 
     <main class="workspace__body">
       <aside class="workspace__list panel">
