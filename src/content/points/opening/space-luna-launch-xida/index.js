@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '开局发射电西大',
-  summary: '看西大是否开门',
+  summary: '45秒射出',
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=40',
     bvid: 'BV1ywRNBZEUH',
