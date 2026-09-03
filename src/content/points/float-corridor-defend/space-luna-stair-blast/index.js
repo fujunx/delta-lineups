@@ -5,7 +5,7 @@ export default {
   id: 'space-luna-stair-blast',
   map: 'space',
   operator: 'luna',
-  name: '楼梯拐角满炸',
+  name: '玻璃拐角满炸',
   description: '',
   throwables: ['grenade'],
   sort: 1,
