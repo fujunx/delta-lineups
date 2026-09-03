@@ -55,11 +55,15 @@ export function validatePoint(point) {
   const errors = []
   if (!point || typeof point !== 'object') return ['点位对象缺失或格式无效']
 
-  const requiredStrings = ['id', 'map', 'operator', 'name', 'summary']
+  const requiredStrings = ['id', 'map', 'operator', 'name']
   for (const key of requiredStrings) {
     if (typeof point[key] !== 'string' || !point[key].trim()) {
       errors.push(`缺少必填字符串字段: ${key}`)
     }
+  }
+  // 一句话用途可为空；如提供了则要求是字符串。
+  if (point.summary != null && typeof point.summary !== 'string') {
+    errors.push('一句话用途必须是字符串')
   }
 
   if (!findMap(point.map)) errors.push(`未知地图: ${point.map}`)

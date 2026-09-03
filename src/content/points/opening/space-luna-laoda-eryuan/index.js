@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '牢大电二员',
-  summary: '看二员是否过点',
+  summary: '',
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=75',
     bvid: 'BV1ywRNBZEUH',

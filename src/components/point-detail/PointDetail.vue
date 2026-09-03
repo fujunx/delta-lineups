@@ -57,7 +57,7 @@ function closeViewer() {
           <span v-else class="detail__unavailable">视频链接无效</span>
         </h2>
 
-        <p class="detail__summary">{{ point.summary }}</p>
+        <p v-if="point.summary" class="detail__summary">{{ point.summary }}</p>
       </header>
 
       <StepGallery :steps="point.steps" @open="openViewer" />
