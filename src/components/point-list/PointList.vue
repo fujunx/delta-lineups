@@ -83,8 +83,8 @@ function select(id) {
             @click="select(p.id)"
           >
             <span class="pointlist__toptitle">
-              <ThrowableTags :throwables="p.throwables" />
               <span class="pointlist__name">{{ p.name }}</span>
+              <ThrowableTags :throwables="p.throwables" />
             </span>
           </button>
         </li>
