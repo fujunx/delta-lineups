@@ -59,6 +59,7 @@ export const CATEGORIES = [
   { id: 'attack', name: '进攻总裁' },
   { id: 'president-outer-detect', name: '总裁外全探测' },
   { id: 'black-market-attack', name: '黑市进攻总裁' },
+  { id: 'float-attack', name: '浮力进攻总裁' },
 ]
 
 /** 根据 id 查找点位类别，找不到返回 null。 */
