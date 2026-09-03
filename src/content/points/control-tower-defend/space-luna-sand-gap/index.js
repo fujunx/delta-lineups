@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '沙地缺口',
-  description: '会议室门口站位；电箭点射；手雷2秒丢',
+  description: '会议室门口站位；瞄准柱子的阴面；电箭点射；手雷2秒丢',
   throwables: ['electric-arrow', 'grenade'],
   sort: 1,
   steps: [
