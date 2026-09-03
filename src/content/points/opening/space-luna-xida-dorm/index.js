@@ -9,6 +9,11 @@ export default {
   description: '',
   throwables: ['grenade'],
   sort: 5,
+  video: {
+    url: 'https://www.bilibili.com/video/BV1xCFPzzEbk?t=82',
+    bvid: 'BV1xCFPzzEbk',
+    start: 82,
+  },
   steps: [
     { name: '站位', alt: '踩上箭头与黄条中间的地块时抬头', image: step1 },
     { name: '瞄准位置', alt: '一直跑不停丢2个雷，往上两层楼的高度', image: step2 },
