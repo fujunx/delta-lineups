@@ -89,12 +89,12 @@ button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   min-width: 2em;
-  padding: 2px 5px;
+  padding: 2px 8px;
   border: 1px solid currentColor;
   border-radius: 3px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.5;
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
