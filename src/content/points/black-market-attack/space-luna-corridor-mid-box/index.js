@@ -5,7 +5,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '走廊中部箱后头皮位',
-  description: '',
+  description: '1.5秒丢',
   throwables: ['grenade'],
   sort: 2,
   video: {

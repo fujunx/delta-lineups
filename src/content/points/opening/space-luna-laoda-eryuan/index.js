@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '牢大电二员',
-  description: '',
+  description: '跳跃，点射',
   throwables: ['electric-arrow'],
   sort: 3,
   video: {

@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '走廊尽头直架位',
-  description: '',
+  description: '2秒丢',
   throwables: ['grenade'],
   sort: 3,
   video: {

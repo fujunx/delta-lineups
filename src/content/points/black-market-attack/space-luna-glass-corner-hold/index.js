@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '玻璃拐角直架',
-  description: '',
+  description: '反弹，蓄力射出',
   throwables: ['electric-arrow'],
   sort: 1,
   video: {

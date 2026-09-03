@@ -5,7 +5,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '破拐角直架',
-  description: '',
+  description: '跳跃，点射（瞄准左上玻璃尽头）',
   throwables: ['electric-arrow'],
   sort: 2,
   video: {
