@@ -56,6 +56,7 @@ export const CATEGORIES = [
   { id: 'float-corridor-defend', name: '浮力走廊防守' },
   { id: 'defend', name: '总裁防守' },
   { id: 'attack', name: '进攻总裁' },
+  { id: 'president-outer-detect', name: '总裁外全探测' },
 ]
 
 /** 根据 id 查找点位类别，找不到返回 null。 */

@@ -78,13 +78,14 @@ export function validatePoint(point) {
   if (!findCategory(point.category)) errors.push(`未知点位类别: ${point.category}`)
   if (!findThrowable(point.throwable)) errors.push(`未知或缺失的道具: ${point.throwable}`)
 
+  // 视频可选：存在时要求可解析出 BV 号；无视频也可（不提供“在 B 站打开”入口）。
   const video = point.video
-  if (!video) {
-    errors.push('缺少视频信息: video')
-  } else if (typeof video.url !== 'string' || !video.url.trim()) {
-    errors.push('缺少视频地址: video.url')
-  } else if (!video.bvid) {
-    errors.push('B 站链接无法解析出 BV 号')
+  if (video != null) {
+    if (typeof video.url !== 'string' || !video.url.trim()) {
+      errors.push('缺少视频地址: video.url')
+    } else if (!video.bvid) {
+      errors.push('B 站链接无法解析出 BV 号')
+    }
   }
 
   if (!Array.isArray(point.steps) || point.steps.length < 1 || point.steps.length > 4) {

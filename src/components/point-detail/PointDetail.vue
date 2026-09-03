@@ -21,6 +21,8 @@ const props = defineProps({
 const videoInfo = computed(() => parseBilibili(props.point?.video?.url || ''))
 const externalUrl = computed(() => buildExternalUrl(videoInfo.value))
 const startSeconds = computed(() => videoInfo.value.start)
+/** 存在视频地址但无法解析出 BV 号时提示。 */
+const videoInvalid = computed(() => Boolean(props.point?.video?.url) && !externalUrl.value)
 const categoryName = computed(() => findCategory(props.point?.category)?.name ?? '')
 
 /** 当前打开的全屏图片索引，null 表示关闭。 */
@@ -56,7 +58,7 @@ function closeViewer() {
             <span class="detail__play" aria-hidden="true">▶</span>
             <span>在 B 站打开{{ startSeconds > 0 ? `（${startSeconds}s）` : '' }}</span>
           </a>
-          <span v-else class="detail__unavailable">视频链接无效</span>
+          <span v-else-if="videoInvalid" class="detail__unavailable">视频链接无效</span>
         </h2>
 
         <p v-if="point.summary" class="detail__summary">{{ point.summary }}</p>
