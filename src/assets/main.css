@@ -413,7 +413,7 @@ button { font-family: inherit; }
 }
 .detail__play { font-size: 11px; line-height: 1; }
 .detail__unavailable { font-size: 13px; color: var(--muted); }
-.detail__summary { margin: 8px 0 0; color: var(--text-dim); }
+.detail__description { margin: 8px 0 0; color: var(--text-dim); }
 
 /* 空状态 */
 .detail__empty {

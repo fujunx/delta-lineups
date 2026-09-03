@@ -5,7 +5,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '黑市射H',
-  summary: '先PEEK一下前点有没有人',
+  description: '先PEEK一下前点有没有人',
   throwable: 'detect-arrow',
   sort: 2,
   steps: [

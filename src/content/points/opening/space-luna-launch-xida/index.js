@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '发射电西大',
-  summary: '45秒射出',
+  description: '45秒射出',
   throwable: 'electric-arrow',
   sort: 2,
   video: {

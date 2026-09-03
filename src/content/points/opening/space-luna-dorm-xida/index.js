@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '宿舍电西大',
-  summary: '40秒射出',
+  description: '40秒射出',
   throwable: 'electric-arrow',
   sort: 1,
   video: {

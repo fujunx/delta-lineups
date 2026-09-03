@@ -6,7 +6,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '楼梯拐角满炸',
-  summary: '',
+  description: '',
   throwable: 'grenade',
   sort: 1,
   video: {

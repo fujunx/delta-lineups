@@ -68,9 +68,9 @@ export function validatePoint(point) {
       errors.push(`缺少必填字符串字段: ${key}`)
     }
   }
-  // 一句话用途可为空；如提供了则要求是字符串。
-  if (point.summary != null && typeof point.summary !== 'string') {
-    errors.push('一句话用途必须是字符串')
+  // 描述（description）可为空；如提供了则要求是字符串。
+  if (point.description != null && typeof point.description !== 'string') {
+    errors.push('描述必须是字符串')
   }
 
   if (!findMap(point.map)) errors.push(`未知地图: ${point.map}`)

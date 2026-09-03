@@ -5,7 +5,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '浮力射草',
-  summary: '先PEEK一下前点有没有人',
+  description: '先PEEK一下前点有没有人',
   throwable: 'detect-arrow',
   sort: 1,
   steps: [

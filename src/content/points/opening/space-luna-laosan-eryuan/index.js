@@ -5,7 +5,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '牢三点二员',
-  summary: '滑索上去不动',
+  description: '滑索上去不动',
   throwable: 'electric-arrow',
   sort: 4,
   video: {
