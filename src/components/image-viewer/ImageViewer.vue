@@ -133,7 +133,7 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <footer class="viewer__pager">
+    <footer class="viewer__pager" @click.self="close">
       <button
         type="button"
         class="viewer__pagerbtn"

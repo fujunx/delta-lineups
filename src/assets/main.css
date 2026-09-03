@@ -508,6 +508,8 @@ button { font-family: inherit; }
   overflow: hidden;
   cursor: grab;
   min-height: 0;
+  /* 两侧留白：让图片不贴边，观感更舒适 */
+  padding: 16px clamp(24px, 6vw, 140px);
 }
 .viewer__stage:active { cursor: grabbing; }
 .viewer__image {
