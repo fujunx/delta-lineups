@@ -5,7 +5,7 @@ export default {
   map: 'space',
   operator: 'luna',
   name: '牢三点二员',
-  summary: '看二员是否过点',
+  summary: '滑索上去不动',
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=97',
     bvid: 'BV1ywRNBZEUH',
