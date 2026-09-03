@@ -8,7 +8,7 @@ export default {
   name: '破洞直架',
   description: '反弹、点射',
   throwables: ['electric-arrow'],
-  sort: 3,
+  sort: 2,
   video: {
     url: 'https://www.bilibili.com/video/BV14KcxzMEYi?t=30',
     bvid: 'BV14KcxzMEYi',

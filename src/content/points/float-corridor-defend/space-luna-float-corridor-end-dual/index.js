@@ -8,7 +8,7 @@ export default {
   name: '走廊尽头直架',
   description: '电箭蓄力不反弹；手雷2秒丢',
   throwables: ['electric-arrow', 'grenade'],
-  sort: 5,
+  sort: 1,
   steps: [
     {
       name: '电箭',

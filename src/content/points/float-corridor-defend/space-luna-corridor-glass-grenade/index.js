@@ -8,7 +8,7 @@ export default {
   name: '玻璃拐角',
   description: '2秒丢',
   throwables: ['grenade'],
-  sort: 4,
+  sort: 3,
   video: {
     url: 'https://www.bilibili.com/video/BV14KcxzMEYi?t=48',
     bvid: 'BV14KcxzMEYi',

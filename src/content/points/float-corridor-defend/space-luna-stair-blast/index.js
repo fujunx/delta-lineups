@@ -8,7 +8,7 @@ export default {
   name: '玻璃拐角满炸',
   description: '',
   throwables: ['grenade'],
-  sort: 1,
+  sort: 5,
   video: {
     url: 'https://www.bilibili.com/video/BV1WW6eBKEuz?t=45.8',
     bvid: 'BV1WW6eBKEuz',

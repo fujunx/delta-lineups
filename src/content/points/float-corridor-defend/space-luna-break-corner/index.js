@@ -7,7 +7,7 @@ export default {
   name: '玻璃拐角直架',
   description: '跳跃，点射（瞄准左上玻璃尽头）',
   throwables: ['electric-arrow'],
-  sort: 2,
+  sort: 4,
   video: {
     url: 'https://www.bilibili.com/video/BV1WW6eBKEuz?t=71',
     bvid: 'BV1WW6eBKEuz',
