@@ -438,6 +438,8 @@ button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  /* 上下留白，保证悬浮黄色描边不被裁切 */
+  padding: 6px 8px;
 }
 .stepgallery--scroll {
   align-items: flex-start;

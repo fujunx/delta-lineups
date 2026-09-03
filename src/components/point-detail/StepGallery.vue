@@ -23,7 +23,14 @@ let ro = null
 function update() {
   const el = rootRef.value
   if (!el) return
-  box.value = { w: el.clientWidth, h: el.clientHeight }
+  // 去除 padding 后的内容区尺寸，避免悬浮描边被 overflow:hidden 裁掉。
+  const style = getComputedStyle(el)
+  const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
+  const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)
+  box.value = {
+    w: Math.max(0, el.clientWidth - padX),
+    h: Math.max(0, el.clientHeight - padY),
+  }
 }
 
 onMounted(() => {
