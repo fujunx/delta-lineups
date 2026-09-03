@@ -85,15 +85,16 @@ button { font-family: inherit; }
 
 /* 道具 2 字标签（按道具配色） */
 .ptag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 2em;
-  text-align: center;
-  padding: 1px 5px;
+  padding: 2px 5px;
   border: 1px solid currentColor;
   border-radius: 3px;
   font-size: 11px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1;
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -389,7 +390,7 @@ button { font-family: inherit; }
   min-height: 0;
 }
 .detail__head { margin-bottom: 14px; flex: 0 0 auto; }
-.detail__tags { display: flex; gap: 6px; margin-bottom: 10px; }
+.detail__tags { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
 .detail__title {
   margin: 0;
   font-size: 22px;
