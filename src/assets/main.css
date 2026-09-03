@@ -342,6 +342,9 @@ button { font-family: inherit; }
 }
 .pointlist__summary {
   display: block;
+  /* 预留一行固定高度：有无一句话，列表项高度保持一致 */
+  min-height: 18px;
+  line-height: 1.4;
   color: var(--text-dim);
   font-size: 13px;
   margin-top: 2px;

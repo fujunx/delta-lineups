@@ -76,7 +76,7 @@ function select(id) {
             @click="select(p.id)"
           >
             <span class="pointlist__name">{{ p.name }}</span>
-            <span v-if="p.summary" class="pointlist__summary">{{ p.summary }}</span>
+            <span class="pointlist__summary">{{ p.summary || '' }}</span>
           </button>
         </li>
       </ul>
