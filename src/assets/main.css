@@ -339,16 +339,13 @@ button { font-family: inherit; }
   padding: 0 0 0 12px;
 }
 .pointlist__button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 54px;
+  display: block;
   width: 100%;
   text-align: left;
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius);
-  padding: 7px 12px;
+  padding: 9px 12px;
   color: var(--text);
   cursor: pointer;
   transition: background 0.12s, border-color 0.12s;
@@ -372,13 +369,6 @@ button { font-family: inherit; }
   display: block;
   font-weight: 600;
   min-width: 0;
-}
-.pointlist__summary {
-  display: block;
-  line-height: 1.4;
-  color: var(--text-dim);
-  font-size: 13px;
-  margin-top: 2px;
 }
 
 /* ---------------- 详情（右栏图片区域） ---------------- */

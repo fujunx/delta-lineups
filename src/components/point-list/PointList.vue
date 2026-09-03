@@ -80,7 +80,6 @@ function select(id) {
               <ThrowableTag :throwable="p.throwable" />
               <span class="pointlist__name">{{ p.name }}</span>
             </span>
-            <span v-if="p.summary" class="pointlist__summary">{{ p.summary }}</span>
           </button>
         </li>
       </ul>
