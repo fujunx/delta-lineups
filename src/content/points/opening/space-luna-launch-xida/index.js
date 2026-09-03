@@ -7,6 +7,7 @@ export default {
   operator: 'luna',
   name: '发射电西大',
   summary: '45秒射出',
+  throwable: 'electric-arrow',
   sort: 2,
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=40',

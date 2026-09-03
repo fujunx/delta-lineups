@@ -62,3 +62,19 @@ export const CATEGORIES = [
 export function findCategory(id) {
   return CATEGORIES.find((c) => c.id === id) ?? null
 }
+
+/**
+ * 道具配置。每个点位必须填写道具（throwable）。
+ * short：展示在名称前的 2 字标签；color：标签颜色（hex）。
+ * 暂按露娜的道具维护；如后续其它干员引入道具，可在此追加。
+ */
+export const THROWABLES = [
+  { id: 'electric-arrow', name: '电箭', short: '电箭', color: '#2563eb' }, // 雷电蓝
+  { id: 'grenade', name: '手雷', short: '手雷', color: '#16a34a' },
+  { id: 'detect-arrow', name: '探测箭', short: '探测', color: '#dc2626' },
+]
+
+/** 根据 id 查找道具，找不到返回 null。 */
+export function findThrowable(id) {
+  return THROWABLES.find((t) => t.id === id) ?? null
+}

@@ -7,6 +7,7 @@
 import { computed, ref } from 'vue'
 import { parseBilibili, buildExternalUrl } from '../../utils/bilibili'
 import { findCategory } from '../../content/catalog'
+import ThrowableTag from '../ThrowableTag.vue'
 import StepGallery from './StepGallery.vue'
 import ImageViewer from '../image-viewer/ImageViewer.vue'
 
@@ -41,7 +42,7 @@ function closeViewer() {
           <span class="tag">{{ categoryName }}</span>
           <span class="tag">{{ mapName }}</span>
           <span class="tag">{{ operatorName }}</span>
-          <span v-if="point.throwable" class="tag tag--item">道具：{{ point.throwable }}</span>
+          <ThrowableTag :throwable="point.throwable" />
         </div>
         <h2 class="detail__title">
           <span class="detail__title-text">{{ point.name }}</span>

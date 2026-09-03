@@ -83,6 +83,21 @@ button { font-family: inherit; }
   background: rgba(217, 101, 26, 0.08);
 }
 
+/* 道具 2 字标签（按道具配色） */
+.ptag {
+  display: inline-block;
+  min-width: 2em;
+  text-align: center;
+  padding: 1px 5px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 /* ---------------- 面板 ---------------- */
 .panel {
   background: var(--panel);
@@ -375,9 +390,16 @@ button { font-family: inherit; }
   border-color: var(--accent);
   box-shadow: inset 3px 0 0 var(--accent);
 }
+.pointlist__toptitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
 .pointlist__name {
   display: block;
   font-weight: 600;
+  min-width: 0;
 }
 .pointlist__summary {
   display: block;

@@ -5,7 +5,7 @@
  * 避免把几十个点位堆在单个数据文件中。每个点位拥有独立目录和内容配置，
  * 目录层级的第一层为点位类别（见 catalog.js CATEGORIES）。
  */
-import { findMap, findOperator, findCategory } from './catalog'
+import { findMap, findOperator, findCategory, findThrowable } from './catalog'
 
 const modules = import.meta.glob('./points/*/*/index.js', { eager: true })
 
@@ -76,6 +76,7 @@ export function validatePoint(point) {
   if (!findMap(point.map)) errors.push(`未知地图: ${point.map}`)
   if (!findOperator(point.operator)) errors.push(`未知干员: ${point.operator}`)
   if (!findCategory(point.category)) errors.push(`未知点位类别: ${point.category}`)
+  if (!findThrowable(point.throwable)) errors.push(`未知或缺失的道具: ${point.throwable}`)
 
   const video = point.video
   if (!video) {

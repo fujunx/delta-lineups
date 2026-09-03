@@ -7,7 +7,7 @@ export default {
   operator: 'luna',
   name: '楼梯拐角满炸',
   summary: '',
-  throwable: '手雷',
+  throwable: 'grenade',
   sort: 1,
   video: {
     url: 'https://www.bilibili.com/video/BV1WW6eBKEuz?t=45.8',

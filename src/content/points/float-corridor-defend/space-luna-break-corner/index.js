@@ -6,7 +6,7 @@ export default {
   operator: 'luna',
   name: '破拐角直架',
   summary: '',
-  throwable: '电箭',
+  throwable: 'electric-arrow',
   sort: 2,
   video: {
     url: 'https://www.bilibili.com/video/BV1WW6eBKEuz?t=71',

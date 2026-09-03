@@ -5,6 +5,7 @@
  */
 import { computed, reactive } from 'vue'
 import { CATEGORIES, findCategory } from '../../content/catalog'
+import ThrowableTag from '../ThrowableTag.vue'
 
 const props = defineProps({
   points: { type: Array, required: true },
@@ -75,7 +76,10 @@ function select(id) {
             :aria-pressed="p.id === selectedId"
             @click="select(p.id)"
           >
-            <span class="pointlist__name">{{ p.name }}</span>
+            <span class="pointlist__toptitle">
+              <ThrowableTag :throwable="p.throwable" />
+              <span class="pointlist__name">{{ p.name }}</span>
+            </span>
             <span class="pointlist__summary">{{ p.summary || '' }}</span>
           </button>
         </li>

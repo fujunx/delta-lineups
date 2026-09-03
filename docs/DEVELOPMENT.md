@@ -257,8 +257,9 @@ AI 录入时执行以下规则：
 
 - 地图（大坝 / 航天）
 - 干员（露娜 / 威龙）
-- 类别（开局 / 总裁防守 / 进攻总裁；已有类别见 `catalog.js` 的 `CATEGORIES`）
+- 类别（开局 / 总裁防守 / 进攻总裁等；已有类别见 `catalog.js` 的 `CATEGORIES`）
 - 点位名称
+- 道具（必填；露娜 含 电箭 / 手雷 / 探测箭，见 `catalog.js` 的 `THROWABLES`，含 2 字标签与配色）
 - 一句话用途（可选，可为空；例如“开局发射点西大，封锁中路”）
 - 带开始时间的 B 站链接（例如 `https://www.bilibili.com/video/BV1ywRNBZEUH?t=40`）
 - 步骤图片（按顺序）
