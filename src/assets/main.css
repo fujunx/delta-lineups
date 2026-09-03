@@ -328,29 +328,31 @@ button { font-family: inherit; }
 .pointlist__group-button {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   width: 100%;
   margin: 0;
-  padding: 7px 12px;
-  background: transparent;
-  border: none;
+  padding: 8px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
   border-radius: var(--radius);
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-align: left;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 .pointlist__group-button:hover {
-  background: var(--panel-2);
-  color: var(--text);
+  background: var(--border-soft);
+  border-color: var(--accent);
 }
 .pointlist__chevron {
   display: inline-block;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1;
+  color: var(--muted);
   transition: transform 0.15s;
 }
 .pointlist__chevron.is-open { transform: rotate(90deg); }
@@ -366,8 +368,9 @@ button { font-family: inherit; }
 }
 .pointlist__list {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 6px 0 0 14px;
+  padding: 0 0 0 12px;
+  border-left: 2px solid var(--border-soft);
 }
 .pointlist__button {
   display: block;
