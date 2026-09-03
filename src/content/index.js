@@ -94,10 +94,12 @@ export function validatePoint(point) {
     }
   }
 
-  if (!Array.isArray(point.steps) || point.steps.length < 1 || point.steps.length > 4) {
-    errors.push('步骤图数量必须在 1~4 张')
+  // 步骤图可选，最多 4 张（0 张表示无图，仅作说明用）。
+  const steps = Array.isArray(point.steps) ? point.steps : []
+  if (steps.length > 4) {
+    errors.push('步骤图数量不能超过 4 张')
   } else {
-    point.steps.forEach((s, i) => {
+    steps.forEach((s, i) => {
       if (!s || typeof s.image !== 'string' || !s.image) {
         errors.push(`第 ${i + 1} 张步骤图缺少 image`)
       }
