@@ -53,12 +53,10 @@ export const CREATORS = [
  */
 export const CATEGORIES = [
   { id: 'opening', name: '开局' },
-  { id: 'float-corridor-defend', name: '浮力走廊防守' },
   { id: 'control-tower-defend', name: '中控楼防守' },
-  { id: 'defend', name: '总裁防守' },
-  { id: 'attack', name: '进攻总裁' },
-  { id: 'black-market-attack', name: '黑室进攻总裁' },
   { id: 'float-attack', name: '浮力进攻总裁' },
+  { id: 'float-corridor-defend', name: '浮力走廊防守' },
+  { id: 'black-market-attack', name: '黑室进攻总裁' },
   { id: 'black-room-corridor-defend', name: '黑室走廊防守' },
 ]
 
