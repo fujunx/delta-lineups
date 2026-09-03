@@ -9,12 +9,22 @@
  * 通过 ResizeObserver 测量容器宽高，使不超过 4 张时一屏放下。
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { parseBilibili, buildExternalUrl } from '../../utils/bilibili'
 
 const props = defineProps({
   steps: { type: Array, default: () => [] },
 })
 
 const emit = defineEmits(['open'])
+
+/** 某一步骤图的视频跳转信息（无则返回 null）。 */
+function stepVideo(step) {
+  const url = step?.video?.url
+  if (!url) return null
+  const p = parseBilibili(url)
+  if (!p.bvid) return null
+  return { url: buildExternalUrl(p), start: p.start }
+}
 
 const rootRef = ref(null)
 const box = ref({ w: 0, h: 0 })
@@ -102,6 +112,17 @@ const layout = computed(() => {
           />
           <span class="steps__label">{{ String(i + 1).padStart(2, '0') }} · {{ step.name }}</span>
         </button>
+
+        <a
+          v-if="stepVideo(step)"
+          :href="stepVideo(step).url"
+          class="steps__video"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click.stop
+        >
+          ▶ {{ stepVideo(step).start > 0 ? `${stepVideo(step).start}s` : '播放' }}
+        </a>
       </li>
     </ol>
     <p v-else class="steps__empty">暂无步骤图</p>

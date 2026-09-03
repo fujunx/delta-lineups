@@ -515,6 +515,30 @@ button { font-family: inherit; }
   line-height: 1.4;
   pointer-events: none;
 }
+.steps__video {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: background 0.12s, color 0.12s;
+}
+.steps__video:hover {
+  background: var(--accent);
+  color: #fff;
+}
 
 /* ---------------- 全屏查看器（浅色系，半透明遮罩） ---------------- */
 .viewer {

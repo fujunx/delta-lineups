@@ -101,6 +101,10 @@ export function validatePoint(point) {
       if (!s || typeof s.image !== 'string' || !s.image) {
         errors.push(`第 ${i + 1} 张步骤图缺少 image`)
       }
+      const sv = s?.video
+      if (sv != null && (typeof sv.url !== 'string' || !sv.url.trim() || !sv.bvid)) {
+        errors.push(`第 ${i + 1} 张步骤图的视频链接无法解析`)
+      }
     })
   }
 
