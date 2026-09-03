@@ -358,12 +358,20 @@ button { font-family: inherit; }
 }
 .detail__head { margin-bottom: 14px; flex: 0 0 auto; }
 .detail__tags { display: flex; gap: 6px; margin-bottom: 10px; }
-.detail__title { margin: 0; font-size: 22px; font-weight: 700; }
+.detail__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.detail__title-text { min-width: 0; }
 .detail__video-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 6px;
   color: var(--accent);
   text-decoration: none;
   font-size: 14px;
@@ -380,7 +388,7 @@ button { font-family: inherit; }
   box-shadow: 0 0 0 2px rgba(223, 160, 0, 0.14);
 }
 .detail__play { font-size: 11px; line-height: 1; }
-.detail__unavailable { font-size: 13px; color: var(--muted); margin-top: 6px; display: inline-block; }
+.detail__unavailable { font-size: 13px; color: var(--muted); }
 .detail__summary { margin: 8px 0 0; color: var(--text-dim); }
 
 /* 空状态 */

@@ -42,19 +42,20 @@ function closeViewer() {
           <span class="tag">{{ mapName }}</span>
           <span class="tag">{{ operatorName }}</span>
         </div>
-        <h2 class="detail__title">{{ point.name }}</h2>
-
-        <a
-          v-if="externalUrl"
-          :href="externalUrl"
-          class="detail__video-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="detail__play" aria-hidden="true">▶</span>
-          <span>在 B 站打开{{ startSeconds > 0 ? `（${startSeconds}s）` : '' }}</span>
-        </a>
-        <span v-else class="detail__unavailable">视频链接无效</span>
+        <h2 class="detail__title">
+          <span class="detail__title-text">{{ point.name }}</span>
+          <a
+            v-if="externalUrl"
+            :href="externalUrl"
+            class="detail__video-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="detail__play" aria-hidden="true">▶</span>
+            <span>在 B 站打开{{ startSeconds > 0 ? `（${startSeconds}s）` : '' }}</span>
+          </a>
+          <span v-else class="detail__unavailable">视频链接无效</span>
+        </h2>
 
         <p class="detail__summary">{{ point.summary }}</p>
       </header>
