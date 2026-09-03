@@ -7,7 +7,7 @@ export default {
   operator: 'luna',
   name: '牢大电二员',
   description: '',
-  throwable: 'electric-arrow',
+  throwables: ['electric-arrow'],
   sort: 3,
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=75',

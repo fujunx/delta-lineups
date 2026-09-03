@@ -6,7 +6,7 @@ export default {
   operator: 'luna',
   name: '黑市射H',
   description: '先PEEK一下前点有没有人',
-  throwable: 'detect-arrow',
+  throwables: ['detect-arrow'],
   sort: 2,
   steps: [
     { name: '黑市方向', alt: '瞄准字母H上面一点点', image: step1 },

@@ -7,7 +7,7 @@ export default {
   operator: 'luna',
   name: '宿舍电西大',
   description: '40秒射出',
-  throwable: 'electric-arrow',
+  throwables: ['electric-arrow'],
   sort: 1,
   video: {
     url: 'https://www.bilibili.com/video/BV11jTWz5EQk?t=6',

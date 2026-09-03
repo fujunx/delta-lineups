@@ -54,6 +54,7 @@ export const CREATORS = [
 export const CATEGORIES = [
   { id: 'opening', name: '开局' },
   { id: 'float-corridor-defend', name: '浮力走廊防守' },
+  { id: 'control-tower-defend', name: '中控楼防守' },
   { id: 'defend', name: '总裁防守' },
   { id: 'attack', name: '进攻总裁' },
   { id: 'president-outer-detect', name: '总裁外全探测' },

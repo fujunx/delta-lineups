@@ -76,7 +76,13 @@ export function validatePoint(point) {
   if (!findMap(point.map)) errors.push(`未知地图: ${point.map}`)
   if (!findOperator(point.operator)) errors.push(`未知干员: ${point.operator}`)
   if (!findCategory(point.category)) errors.push(`未知点位类别: ${point.category}`)
-  if (!findThrowable(point.throwable)) errors.push(`未知或缺失的道具: ${point.throwable}`)
+  if (!Array.isArray(point.throwables) || point.throwables.length === 0) {
+    errors.push('缺少道具: throwables（至少一个）')
+  } else {
+    point.throwables.forEach((t) => {
+      if (!findThrowable(t)) errors.push(`未知的道具: ${t}`)
+    })
+  }
 
   // 视频可选：存在时要求可解析出 BV 号；无视频也可（不提供“在 B 站打开”入口）。
   const video = point.video

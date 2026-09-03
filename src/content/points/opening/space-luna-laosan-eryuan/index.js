@@ -6,7 +6,7 @@ export default {
   operator: 'luna',
   name: '牢三点二员',
   description: '滑索上去不动',
-  throwable: 'electric-arrow',
+  throwables: ['electric-arrow'],
   sort: 4,
   video: {
     url: 'https://www.bilibili.com/video/BV1ywRNBZEUH?t=97',
