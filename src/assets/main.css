@@ -276,40 +276,6 @@ button { font-family: inherit; }
   white-space: nowrap;
 }
 
-/* ---------------- 一级菜单（类别） ---------------- */
-.catmenu {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border-soft);
-  background: var(--panel);
-  overflow-x: auto;
-}
-.catmenu__item {
-  appearance: none;
-  background: var(--panel);
-  color: var(--text-dim);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color 0.12s, background 0.12s, color 0.12s, box-shadow 0.12s;
-}
-.catmenu__item:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-.catmenu__item.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #1f1a04;
-  box-shadow: 0 0 0 3px rgba(223, 160, 0, 0.18);
-}
-
 /* ---------------- 点位列表 ---------------- */
 .pointlist {
   list-style: none;
