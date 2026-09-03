@@ -7,7 +7,8 @@
  * 约定：保存并展示完整的原始地址，同时解析 BV 号和开始秒数 t。
  */
 const BV_REGEX = /BV[0-9A-Za-z]{10}/
-const T_REGEX = /[?&]t=(\d+)/
+// 支持整数或小数秒，例如 t=7 或 t=45.8
+const T_REGEX = /[?&]t=(\d+(?:\.\d+)?)/
 
 /** 解析用户原始 B 站链接，返回结构化信息。无法解析时 bvid 为 null。 */
 export function parseBilibili(url) {

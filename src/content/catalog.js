@@ -53,6 +53,7 @@ export const CREATORS = [
  */
 export const CATEGORIES = [
   { id: 'opening', name: '开局' },
+  { id: 'float-corridor-defend', name: '浮力走廊防守' },
   { id: 'defend', name: '总裁防守' },
   { id: 'attack', name: '进攻总裁' },
 ]

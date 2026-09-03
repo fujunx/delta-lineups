@@ -41,6 +41,7 @@ function closeViewer() {
           <span class="tag">{{ categoryName }}</span>
           <span class="tag">{{ mapName }}</span>
           <span class="tag">{{ operatorName }}</span>
+          <span v-if="point.throwable" class="tag tag--item">道具：{{ point.throwable }}</span>
         </div>
         <h2 class="detail__title">
           <span class="detail__title-text">{{ point.name }}</span>

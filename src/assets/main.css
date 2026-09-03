@@ -77,6 +77,11 @@ button { font-family: inherit; }
   font-size: 12px;
   letter-spacing: 0.04em;
 }
+.tag--item {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+  background: rgba(217, 101, 26, 0.08);
+}
 
 /* ---------------- 面板 ---------------- */
 .panel {
