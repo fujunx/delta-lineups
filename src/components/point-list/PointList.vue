@@ -14,8 +14,14 @@ const props = defineProps({
 
 const emit = defineEmits(['select'])
 
-/** 记录各类别是否折叠（默认展开）。 */
+/**
+ * 记录各类别是否折叠。默认只展开「开局」，其它类别折叠。
+ * 用户点击后可各自切换展开/收起。
+ */
 const collapsed = reactive({})
+for (const c of CATEGORIES) {
+  if (c.id !== 'opening') collapsed[c.id] = true
+}
 
 function toggle(category) {
   collapsed[category] = !collapsed[category]
