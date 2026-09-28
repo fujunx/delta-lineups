@@ -2,6 +2,10 @@
 
 《三角洲行动》道具点位教学库，用于在实战中快速查询地图、干员和对应的道具点位。
 
+## 在线访问
+
+点击直达：[https://fujunx.github.io/delta-lineups/](https://fujunx.github.io/delta-lineups/)
+
 项目计划以纯静态单页应用实现，无需后端或数据库。正式版本可部署到 GitHub Pages，也可以在本地启动开发服务使用。
 
 ## 当前状态
