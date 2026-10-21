@@ -9,6 +9,10 @@ export default {
   throwables: ['detect-arrow'],
   sort: 3,
   steps: [
-    { name: '浮力方向', alt: '瞄准门口那棵草', image: step1 },
+    {
+      name: '浮力方向',
+      alt: '右侧边缘对齐第一个小金突起，蓄力拉满射出',
+      image: step1,
+    },
   ],
 }
