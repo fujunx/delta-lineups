@@ -3,7 +3,7 @@
  * 紧凑点位列表。每项只展示名称与道具标签，突出扫描效率。
  * 按点位类别分组显示，组顺序遵循 CATEGORIES 配置；点击类别标题可折叠/展开该组。
  */
-import { computed, reactive } from 'vue'
+import { computed, nextTick, reactive, ref, watch } from 'vue'
 import { CATEGORIES, findCategory } from '../../content/catalog'
 import ThrowableTags from '../ThrowableTags.vue'
 
@@ -22,6 +22,24 @@ const collapsed = reactive({})
 for (const c of CATEGORIES) {
   if (c.id !== 'opening') collapsed[c.id] = true
 }
+
+const listRoot = ref(null)
+
+/** 深链恢复或切换点位时，确保选中项所在分类展开且可见。 */
+function revealSelected(id) {
+  if (!id) return
+  const point = props.points.find((p) => p.id === id)
+  if (!point) return
+
+  collapsed[point.category] = false
+  nextTick(() => {
+    listRoot.value
+      ?.querySelector(`[data-point-id="${id}"]`)
+      ?.scrollIntoView({ block: 'nearest' })
+  })
+}
+
+watch(() => props.selectedId, revealSelected, { immediate: true })
 
 function toggle(category) {
   collapsed[category] = !collapsed[category]
@@ -56,7 +74,7 @@ function select(id) {
 <template>
   <div v-if="points.length === 0" class="pointlist__empty">暂无匹配点位</div>
 
-  <div v-else class="pointlist">
+  <div v-else ref="listRoot" class="pointlist">
     <section
       v-for="g in groups"
       :key="g.category"
@@ -80,6 +98,7 @@ function select(id) {
             class="pointlist__button"
             :class="{ 'is-selected': p.id === selectedId }"
             :aria-pressed="p.id === selectedId"
+            :data-point-id="p.id"
             @click="select(p.id)"
           >
             <span class="pointlist__toptitle">
